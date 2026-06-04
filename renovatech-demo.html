@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RenovaTech — Tecnología Reacondicionada</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #0a0a0a;
+    --white: #fafafa;
+    --gray-100: #f5f5f5;
+    --gray-200: #e8e8e8;
+    --gray-400: #999;
+    --gray-600: #555;
+    --accent: #0071e3;
+    --accent-dark: #004fb3;
+    --radius: 16px;
+    --radius-sm: 8px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--white);
+    color: var(--black);
+    line-height: 1.6;
+    font-size: 16px;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(250,250,250,0.88);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--gray-200);
+    padding: 0 5vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+  }
+
+  .nav-logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 20px;
+    color: var(--black);
+    text-decoration: none;
+    letter-spacing: -0.3px;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: var(--gray-600);
+    font-size: 14px;
+    font-weight: 400;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--black); }
+
+  .nav-cta {
+    background: var(--black);
+    color: var(--white) !important;
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--gray-600) !important; color: var(--white) !important; }
+
+  /* HERO */
+  .hero {
+    padding: 120px 5vw 100px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .hero-tag {
+    display: inline-block;
+    background: var(--gray-100);
+    color: var(--gray-600);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 20px;
+    margin-bottom: 24px;
+  }
+
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(38px, 4.5vw, 60px);
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+    color: var(--black);
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero-sub {
+    font-size: 17px;
+    color: var(--gray-600);
+    line-height: 1.7;
+    margin-bottom: 36px;
+    max-width: 420px;
+  }
+
+  .hero-buttons {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--black);
+    color: var(--white);
+    padding: 14px 28px;
+    border-radius: 30px;
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: #222; transform: translateY(-1px); }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--black);
+    padding: 14px 28px;
+    border-radius: 30px;
+    font-size: 15px;
+    font-weight: 400;
+    text-decoration: none;
+    border: 1px solid var(--gray-200);
+    transition: border-color 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+  .btn-secondary:hover { border-color: var(--gray-600); transform: translateY(-1px); }
+
+  /* HERO VISUAL */
+  .hero-visual {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .hero-card {
+    background: var(--gray-100);
+    border-radius: var(--radius);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: transform 0.2s;
+  }
+  .hero-card:hover { transform: translateY(-3px); }
+  .hero-card:first-child { grid-column: 1 / -1; background: var(--black); color: var(--white); }
+
+  .card-icon {
+    font-size: 28px;
+    margin-bottom: 4px;
+  }
+
+  .card-name {
+    font-weight: 500;
+    font-size: 15px;
+  }
+
+  .card-sub {
+    font-size: 13px;
+    color: var(--gray-400);
+  }
+
+  .hero-card:first-child .card-sub { color: #888; }
+
+  .card-price {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    margin-top: auto;
+  }
+
+  .badge-refurb {
+    display: inline-block;
+    background: rgba(0,113,227,0.12);
+    color: var(--accent);
+    font-size: 11px;
+    font-weight: 500;
+    padding: 3px 10px;
+    border-radius: 10px;
+    letter-spacing: 0.04em;
+  }
+
+  /* STATS */
+  .stats {
+    background: var(--black);
+    color: var(--white);
+    padding: 60px 5vw;
+  }
+
+  .stats-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    text-align: center;
+  }
+
+  .stat-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 48px;
+    letter-spacing: -0.02em;
+    color: var(--white);
+  }
+
+  .stat-label {
+    font-size: 14px;
+    color: #888;
+    margin-top: 4px;
+  }
+
+  /* PRODUCTS */
+  .products {
+    padding: 100px 5vw;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gray-400);
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(28px, 3vw, 42px);
+    letter-spacing: -0.02em;
+    margin-bottom: 48px;
+    color: var(--black);
+  }
+
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+  }
+
+  .product-card {
+    background: var(--gray-100);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: transform 0.2s;
+    cursor: pointer;
+  }
+  .product-card:hover { transform: translateY(-4px); }
+
+  .product-img {
+    width: 100%;
+    aspect-ratio: 4/3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 64px;
+    background: var(--gray-200);
+  }
+
+  .product-info {
+    padding: 20px;
+  }
+
+  .product-name {
+    font-weight: 500;
+    font-size: 15px;
+    margin-bottom: 4px;
+  }
+
+  .product-desc {
+    font-size: 13px;
+    color: var(--gray-600);
+    margin-bottom: 14px;
+  }
+
+  .product-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .product-price {
+    font-family: 'DM Serif Display', serif;
+    font-size: 20px;
+  }
+
+  .product-condition {
+    font-size: 11px;
+    background: #e6f3ff;
+    color: var(--accent);
+    padding: 3px 10px;
+    border-radius: 10px;
+    font-weight: 500;
+  }
+
+  /* WHY */
+  .why {
+    background: var(--gray-100);
+    padding: 100px 5vw;
+  }
+
+  .why-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 24px;
+    margin-top: 48px;
+  }
+
+  .why-item {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 28px;
+  }
+
+  .why-icon {
+    font-size: 24px;
+    margin-bottom: 14px;
+  }
+
+  .why-title {
+    font-weight: 500;
+    font-size: 15px;
+    margin-bottom: 8px;
+  }
+
+  .why-text {
+    font-size: 13px;
+    color: var(--gray-600);
+    line-height: 1.6;
+  }
+
+  /* CTA */
+  .cta-section {
+    padding: 100px 5vw;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .cta-section h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(28px, 3vw, 48px);
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+  }
+
+  .cta-section p {
+    font-size: 17px;
+    color: var(--gray-600);
+    margin-bottom: 36px;
+    max-width: 420px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--gray-200);
+    padding: 32px 5vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 13px;
+    color: var(--gray-400);
+  }
+
+  .footer-logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 16px;
+    color: var(--black);
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-content { animation: fadeUp 0.6s ease both; }
+  .hero-visual  { animation: fadeUp 0.6s 0.15s ease both; }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    .hero { grid-template-columns: 1fr; gap: 48px; padding: 80px 5vw 60px; }
+    .hero-visual { grid-template-columns: 1fr 1fr; }
+    .stats-inner { grid-template-columns: 1fr; gap: 24px; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">RenovaTech</a>
+  <ul class="nav-links">
+    <li><a href="#productos">Productos</a></li>
+    <li><a href="#por-que">¿Por qué nosotros?</a></li>
+    <li><a href="#contacto" class="nav-cta">Contáctanos</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <span class="hero-tag">Tecnología reacondicionada</span>
+    <h1>Apple y más,<br>al precio <em>justo.</em></h1>
+    <p class="hero-sub">Vendemos iPhones, MacBooks, AirPods y bocinas JBL reacondicionados con garantía. Calidad comprobada, precio honesto.</p>
+    <div class="hero-buttons">
+      <a href="#productos" class="btn-primary">Ver productos</a>
+      <a href="#contacto" class="btn-secondary">Hablar con nosotros</a>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="hero-card">
+      <div class="card-icon">📱</div>
+      <div>
+        <div class="card-name">iPhone 14 Pro</div>
+        <div class="card-sub">128 GB · Space Black</div>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-top:8px;">
+        <div class="card-price">$349</div>
+        <span class="badge-refurb">Grado A</span>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="card-icon">🎧</div>
+      <div class="card-name">AirPods Pro 2</div>
+      <div class="card-sub">Como nuevos</div>
+      <div class="card-price">$119</div>
+    </div>
+    <div class="hero-card">
+      <div class="card-icon">🔊</div>
+      <div class="card-name">JBL Charge 5</div>
+      <div class="card-sub">Waterproof</div>
+      <div class="card-price">$89</div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div>
+      <div class="stat-num">+500</div>
+      <div class="stat-label">Clientes satisfechos</div>
+    </div>
+    <div>
+      <div class="stat-num">3 meses</div>
+      <div class="stat-label">Garantía incluida</div>
+    </div>
+    <div>
+      <div class="stat-num">-40%</div>
+      <div class="stat-label">Vs precio nuevo</div>
+    </div>
+  </div>
+</div>
+
+<!-- PRODUCTS -->
+<section class="products" id="productos">
+  <div class="section-label">Catálogo</div>
+  <div class="section-title">Lo que tenemos ahora</div>
+  <div class="products-grid">
+    <div class="product-card">
+      <div class="product-img">💻</div>
+      <div class="product-info">
+        <div class="product-name">MacBook Air M1</div>
+        <div class="product-desc">8 GB RAM · 256 GB SSD · Batería al 92%</div>
+        <div class="product-footer">
+          <div class="product-price">$579</div>
+          <span class="product-condition">Grado A</span>
+        </div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-img">📱</div>
+      <div class="product-info">
+        <div class="product-name">iPhone 13</div>
+        <div class="product-desc">128 GB · Midnight · Batería al 88%</div>
+        <div class="product-footer">
+          <div class="product-price">$249</div>
+          <span class="product-condition">Grado B+</span>
+        </div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-img">🎵</div>
+      <div class="product-info">
+        <div class="product-name">JBL Flip 6</div>
+        <div class="product-desc">Bluetooth · 12h batería · IP67</div>
+        <div class="product-footer">
+          <div class="product-price">$59</div>
+          <span class="product-condition">Como nuevo</span>
+        </div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-img">⌚</div>
+      <div class="product-info">
+        <div class="product-name">Apple Watch SE 2</div>
+        <div class="product-desc">40 mm · GPS · Starlight</div>
+        <div class="product-footer">
+          <div class="product-price">$179</div>
+          <span class="product-condition">Grado A</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="why" id="por-que">
+  <div class="why-inner">
+    <div class="section-label">¿Por qué elegirnos?</div>
+    <div class="section-title">Tecnología real,<br>sin letra chica.</div>
+    <div class="why-grid">
+      <div class="why-item">
+        <div class="why-icon">🔍</div>
+        <div class="why-title">Inspección de 30 puntos</div>
+        <div class="why-text">Cada producto pasa por revisión técnica completa antes de salir a la venta.</div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">🛡️</div>
+        <div class="why-title">Garantía de 3 meses</div>
+        <div class="why-text">Si algo falla, lo resolvemos. Sin excusas, sin vueltas.</div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">💬</div>
+        <div class="why-title">Atención por WhatsApp</div>
+        <div class="why-text">Respondemos rápido. Puedes preguntar, comparar y comprar sin salir de casa.</div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">♻️</div>
+        <div class="why-title">Consumo responsable</div>
+        <div class="why-text">Comprar reacondicionado reduce residuos electrónicos. Bueno para ti y el planeta.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contacto">
+  <h2>¿Listo para encontrar tu próximo dispositivo?</h2>
+  <p>Escríbenos y te ayudamos a elegir el que mejor se adapta a ti y tu presupuesto.</p>
+  <div class="cta-buttons">
+    <a href="https://wa.me/50300000000" class="btn-primary">Escribir por WhatsApp</a>
+    <a href="mailto:hola@renovatech.com" class="btn-secondary">Enviar correo</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-logo">RenovaTech</span>
+  <span>© 2025 · El Salvador</span>
+</footer>
+
+</body>
+</html>
