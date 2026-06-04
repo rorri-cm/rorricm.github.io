@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RenovaTech — Tecnología Reacondicionada</title>
+<title>Waps Store — Tecnología Reacondicionada</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
 <style>
@@ -290,6 +290,12 @@
     justify-content: center;
     font-size: 64px;
     background: var(--gray-200);
+    overflow: hidden;
+  }
+  .product-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 
   .product-info {
@@ -439,7 +445,7 @@
 
 <!-- NAV -->
 <nav>
-  <a class="nav-logo" href="#">RenovaTech</a>
+  <a class="nav-logo" href="#">Waps Store</a>
   <ul class="nav-links">
     <li><a href="#productos">Productos</a></li>
     <li><a href="#por-que">¿Por qué nosotros?</a></li>
@@ -461,7 +467,6 @@
 
   <div class="hero-visual">
     <div class="hero-card">
-      <div class="card-icon">📱</div>
       <div>
         <div class="card-name">iPhone 14 Pro</div>
         <div class="card-sub">128 GB · Space Black</div>
@@ -472,13 +477,11 @@
       </div>
     </div>
     <div class="hero-card">
-      <div class="card-icon">🎧</div>
       <div class="card-name">AirPods Pro 2</div>
       <div class="card-sub">Como nuevos</div>
       <div class="card-price">$119</div>
     </div>
     <div class="hero-card">
-      <div class="card-icon">🔊</div>
       <div class="card-name">JBL Charge 5</div>
       <div class="card-sub">Waterproof</div>
       <div class="card-price">$89</div>
@@ -510,7 +513,7 @@
   <div class="section-title">Lo que tenemos ahora</div>
   <div class="products-grid">
     <div class="product-card">
-      <div class="product-img">💻</div>
+      <div class="product-img"><img src="images/macbook.jpg" alt="MacBook Air M1" onerror="this.parentElement.innerHTML='💻'"></div>
       <div class="product-info">
         <div class="product-name">MacBook Air M1</div>
         <div class="product-desc">8 GB RAM · 256 GB SSD · Batería al 92%</div>
@@ -521,7 +524,7 @@
       </div>
     </div>
     <div class="product-card">
-      <div class="product-img">📱</div>
+      <div class="product-img"><img src="images/iphone.jpg" alt="iPhone 13" onerror="this.parentElement.innerHTML='📱'"></div>
       <div class="product-info">
         <div class="product-name">iPhone 13</div>
         <div class="product-desc">128 GB · Midnight · Batería al 88%</div>
@@ -532,7 +535,7 @@
       </div>
     </div>
     <div class="product-card">
-      <div class="product-img">🎵</div>
+      <div class="product-img"><img src="images/jbl.jpg" alt="JBL Flip 6" onerror="this.parentElement.innerHTML='🎵'"></div>
       <div class="product-info">
         <div class="product-name">JBL Flip 6</div>
         <div class="product-desc">Bluetooth · 12h batería · IP67</div>
@@ -543,7 +546,7 @@
       </div>
     </div>
     <div class="product-card">
-      <div class="product-img">⌚</div>
+      <div class="product-img"><img src="images/watch.jpg" alt="Apple Watch SE 2" onerror="this.parentElement.innerHTML='⌚'"></div>
       <div class="product-info">
         <div class="product-name">Apple Watch SE 2</div>
         <div class="product-desc">40 mm · GPS · Starlight</div>
@@ -563,22 +566,22 @@
     <div class="section-title">Tecnología real,<br>sin letra chica.</div>
     <div class="why-grid">
       <div class="why-item">
-        <div class="why-icon">🔍</div>
+        
         <div class="why-title">Inspección de 30 puntos</div>
         <div class="why-text">Cada producto pasa por revisión técnica completa antes de salir a la venta.</div>
       </div>
       <div class="why-item">
-        <div class="why-icon">🛡️</div>
+        
         <div class="why-title">Garantía de 3 meses</div>
         <div class="why-text">Si algo falla, lo resolvemos. Sin excusas, sin vueltas.</div>
       </div>
       <div class="why-item">
-        <div class="why-icon">💬</div>
+        
         <div class="why-title">Atención por WhatsApp</div>
         <div class="why-text">Respondemos rápido. Puedes preguntar, comparar y comprar sin salir de casa.</div>
       </div>
       <div class="why-item">
-        <div class="why-icon">♻️</div>
+        
         <div class="why-title">Consumo responsable</div>
         <div class="why-text">Comprar reacondicionado reduce residuos electrónicos. Bueno para ti y el planeta.</div>
       </div>
@@ -598,7 +601,7 @@
 
 <!-- FOOTER -->
 <footer>
-  <span class="footer-logo">RenovaTech</span>
+  <span class="footer-logo">Waps Store</span>
   <span>© 2025 · El Salvador</span>
 </footer>
 
